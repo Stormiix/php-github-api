@@ -182,7 +182,7 @@ class User extends AbstractApi
      *
      * @return array list of the user repositories
      */
-    public function repositories($username, $type = 'owner', $sort = 'full_name', $direction = 'asc', $visibility = 'all', $affiliation = 'owner,collaborator,organization_member')
+    public function repositories($username, $type = 'owner', $sort = 'full_name', $direction = 'asc', $visibility = 'all', $affiliation = 'owner,collaborator,organization_member', $perPage = 1000)
     {
         return $this->get('/users/'.rawurlencode($username).'/repos', [
             'type' => $type,
@@ -190,6 +190,7 @@ class User extends AbstractApi
             'direction' => $direction,
             'visibility' => $visibility,
             'affiliation' => $affiliation,
+            'per_page' => $perPage,
         ]);
     }
 
